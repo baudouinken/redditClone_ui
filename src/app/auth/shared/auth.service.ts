@@ -25,11 +25,11 @@ export class AuthService {
   }
 
   signup(signupRequestPayload: any): Observable<any> {
-    return this.httpClient.post('http://localhost:8080/api/auth/signup', signupRequestPayload, { responseType: 'text' });
+    return this.httpClient.post('https://reddit-app-ken.herokuapp.com/api/auth/signup', signupRequestPayload, { responseType: 'text' });
   }
 
   login(loginRequestPayload: any): Observable<boolean> {
-    return this.httpClient.post<any>("http://localhost:8080/api/auth/signin", loginRequestPayload)
+    return this.httpClient.post<any>("https://reddit-app-ken.herokuapp.com/api/auth/signin", loginRequestPayload)
             // map other subscribe
            .pipe(map((data => {
             this.localStorage.store('token', data.token);
@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   refreshToken() {
-    return this.httpClient.post<any>('http://localhost:8080/api/auth/refresh/token',
+    return this.httpClient.post<any>('https://reddit-app-ken.herokuapp.com/api/auth/refresh/token',
       this.refreshTokenPayload)
       .pipe(tap(response => {
         this.localStorage.clear('token');
@@ -61,7 +61,7 @@ export class AuthService {
   }
 
   logout() {
-    this.httpClient.post('http://localhost:8080/api/auth/logout', this.refreshTokenPayload,
+    this.httpClient.post('https://reddit-app-ken.herokuapp.com/api/auth/logout', this.refreshTokenPayload,
       { responseType: 'text' })
       .subscribe(data => {
         console.log(data);

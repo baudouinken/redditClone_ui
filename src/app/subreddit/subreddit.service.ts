@@ -19,7 +19,7 @@ export class SubredditService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.http.get<Array<any>>('http://localhost:8080/api/subreddit', { headers: headersss });
+    return this.http.get<Array<any>>('https://reddit-app-ken.herokuapp.com/api/subreddit', { headers: headersss });
   }
 
   createSubreddit(subredditModel: any): Observable<any> {
@@ -28,7 +28,7 @@ export class SubredditService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.http.post<any>('http://localhost:8080/api/subreddit',
+    return this.http.post<any>('https://reddit-app-ken.herokuapp.com/api/subreddit',
       subredditModel, { headers: headersss });
   }
 }

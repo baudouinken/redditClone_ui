@@ -20,7 +20,7 @@ export class PostService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.http.get<any[]>('http://localhost:8080/api/posts', { headers: headersss });
+    return this.http.get<any[]>('https://reddit-app-ken.herokuapp.com/api/posts', { headers: headersss });
   }
 
   createPost(postModel: any): Observable<any> {
@@ -29,7 +29,7 @@ export class PostService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.http.post<any>('http://localhost:8080/api/posts',
+    return this.http.post<any>('https://reddit-app-ken.herokuapp.com/api/posts',
     postModel, { headers: headersss });
   }
 
@@ -39,7 +39,7 @@ export class PostService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.http.get<any>(`http://localhost:8080/api/posts/${id}`, { headers: headersss });
+    return this.http.get<any>(`https://reddit-app-ken.herokuapp.com/api/posts/${id}`, { headers: headersss });
   }
 
   getAllPostsByUser(name: string): Observable<any[]>{
@@ -48,6 +48,6 @@ export class PostService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.http.get<any[]>(`http://localhost:8080/api/posts/user/${name}`, { headers: headersss });
+    return this.http.get<any[]>(`https://reddit-app-ken.herokuapp.com/api/posts/user/${name}`, { headers: headersss });
   }
 }

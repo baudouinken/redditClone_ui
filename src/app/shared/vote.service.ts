@@ -17,6 +17,6 @@ export class VoteService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.http.post('http://localhost:8080/api/votes/', votePayload, { headers: headersss });
+    return this.http.post('https://reddit-app-ken.herokuapp.com/api/votes/', votePayload, { headers: headersss });
   }
 }

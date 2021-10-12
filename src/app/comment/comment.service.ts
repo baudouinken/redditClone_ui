@@ -18,7 +18,7 @@ export class CommentService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.httpClient.get<any[]>('http://localhost:8080/api/comments/post/' + postId,
+    return this.httpClient.get<any[]>('https://reddit-app-ken.herokuapp.com/api/comments/post/' + postId,
     { headers: headersss });
   }
 
@@ -28,7 +28,7 @@ export class CommentService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.httpClient.post<any>('http://localhost:8080/api/comments/',
+    return this.httpClient.post<any>('https://reddit-app-ken.herokuapp.com/api/comments/',
     commentPayload, { headers: headersss });
   }
 
@@ -38,6 +38,6 @@ export class CommentService {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.httpClient.get<any[]>(`http://localhost:8080/api/comments/user/${name}`, { headers: headersss });
+    return this.httpClient.get<any[]>(`https://reddit-app-ken.herokuapp.com/api/comments/user/${name}`, { headers: headersss });
   }
 }
