@@ -13,16 +13,16 @@ export class SubredditService {
     public authService: AuthService
     ) { }
 
-  getAllSubreddits() : Observable<any[]>{
+  getAllSubreddits() : Observable<SubredditModel[]>{
     const headersss: HttpHeaders = new HttpHeaders(
       {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
       }
     );
-    return this.http.get<Array<any>>('https://reddit-app-ken.herokuapp.com/api/subreddit', { headers: headersss });
+    return this.http.get<SubredditModel[]>('https://reddit-app-ken.herokuapp.com/api/subreddit', { headers: headersss });
   }
 
-  createSubreddit(subredditModel: any): Observable<any> {
+  createSubreddit(subredditModel: any): Observable<SubredditModel> {
     const headersss: HttpHeaders = new HttpHeaders(
       {
         'Authorization': 'Bearer ' + this.authService.getJwtToken()
@@ -30,5 +30,14 @@ export class SubredditService {
     );
     return this.http.post<any>('https://reddit-app-ken.herokuapp.com/api/subreddit',
       subredditModel, { headers: headersss });
+  }
+
+  getSubreddit(id: number): Observable<SubredditModel> {
+    const headersss: HttpHeaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + this.authService.getJwtToken()
+      }
+    );
+    return this.http.get<SubredditModel>(`https://reddit-app-ken.herokuapp.com/api/subreddit/${id}`, { headers: headersss });
   }
 }
