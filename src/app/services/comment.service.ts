@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CommentPayload } from './comment.payload';
+import { CommentPayload } from '../models/comment.payload';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth/shared/auth.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'

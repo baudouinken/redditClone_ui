@@ -5,13 +5,13 @@
             <div class="card">
                 <div class="card-header" style="text-align: center"><h4>Login</h4></div>
                 <div class="card-body">
-                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <form [formGroup]="signinForm" (ngSubmit)="login()">
                         <div class="form-group row">
                             <label for="user_name" class="col-md-4 col-form-label text-md-right">Username</label>
                             <div class="col-md-6">
                                 <input type="text" id="user_name" class="form-control" [formControlName]="'username'" name="user_name" required
                                     autofocus>
-                                <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">
+                                <span *ngIf="!signinForm.get('username').valid && signinForm.get('username').touched">
                                    Please provide a valid username
                                 </span>
                             </div>
@@ -21,7 +21,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                             <div class="col-md-6">
                                 <input type="password" id="password" class="form-control" [formControlName]="'password'" name="password" required>
-                                <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+                                <span *ngIf="!signinForm.get('password').valid && signinForm.get('password').touched">
                                   Password cannot be empty
                                 </span>
                             </div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from 'src/app/shared/post.service';
+import { PostService } from 'src/app/services/post.service';
 import { ActivatedRoute } from '@angular/router';
-import { CommentService } from 'src/app/comment/comment.service';
-import { PostModel } from 'src/app/shared/post-model';
-import { CommentPayload } from 'src/app/comment/comment.payload';
+import { CommentService } from 'src/app/services/comment.service';
+import { CommentPayload } from 'src/app/models/comment.payload';
+import { PostModel } from 'src/app/models/post-model';
 
 @Component({
   selector: 'app-user-profile',
