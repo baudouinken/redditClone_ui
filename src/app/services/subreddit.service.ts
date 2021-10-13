@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SubredditModel } from './subreddit-response';
+import { SubredditModel } from '../models/subreddit-response';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth/shared/auth.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'

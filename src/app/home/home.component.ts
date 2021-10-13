@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PostModel } from '../shared/post-model';
-import { PostService } from '../shared/post.service';
+import { PostModel } from '../models/post-model';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { PostService } from '../shared/post.service';
 })
 export class HomeComponent implements OnInit {
 
-  posts: Array<PostModel> = [];
+  posts: PostModel[] = [];
 
   constructor(private postService: PostService) {
     this.postService.getAllPosts().subscribe(post => {

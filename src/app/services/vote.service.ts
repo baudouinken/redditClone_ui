@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { VotePayload } from './vote-button/vote-payload';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth/shared/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'

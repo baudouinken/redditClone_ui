@@ -1,13 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PostModel } from '../post-model';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { VotePayload } from './vote-payload';
-import { VoteType } from './vote-type';
-import { VoteService } from '../vote.service';
-import { AuthService } from 'src/app/auth/shared/auth.service';
-import { PostService } from '../post.service';
+import { VotePayload } from '../../models/vote-payload';
+import { AuthService } from 'src/app/services/auth.service';
+import { PostService } from '../../services/post.service';
 import { throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { VoteService } from 'src/app/services/vote.service';
+import { VoteType } from 'src/app/models/vote-type';
 
 @Component({
   selector: 'app-vote-button',

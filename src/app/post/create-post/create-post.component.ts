@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { SubredditModel } from 'src/app/subreddit/subreddit-response';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PostService } from 'src/app/shared/post.service';
-import { SubredditService } from 'src/app/subreddit/subreddit.service';
+import { PostService } from 'src/app/services/post.service';
+import { SubredditService } from 'src/app/services/subreddit.service';
 import { throwError } from 'rxjs';
-import { CreatePostPayload } from './create-post.payload';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-post',
@@ -15,27 +15,26 @@ import { CreatePostPayload } from './create-post.payload';
 export class CreatePostComponent implements OnInit {
 
   createPostForm: FormGroup;
-  postPayload: any;
-  subreddits: Array<any>;
+  subreddits: any[];
 
-  constructor(private router: Router, private postService: PostService,
-    private subredditService: SubredditService) {
-    this.postPayload = {
-      postName: '',
-      url: '',
-      description: '',
-      subredditId: ''
-    }
-  }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService,
+    private subRedditService: SubredditService,
+    private postsService: PostService,
+    ) { }
 
   ngOnInit() {
-    this.createPostForm = new FormGroup({
-      postName: new FormControl('', Validators.required),
-      subredditName: new FormControl('', Validators.required),
-      url: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+    this.createPostForm = this._formBuilder.group({
+      postName: ['', Validators.required],
+      subredditId: ['', Validators.required],
+      url: ['', Validators.required],
+      description: ['', Validators.required],
     });
-    this.subredditService.getAllSubreddits().subscribe((data) => {
+
+    this.subRedditService.getAllSubreddits().subscribe((data) => {
       this.subreddits = data;
     }, error => {
       throwError(error);
@@ -43,12 +42,8 @@ export class CreatePostComponent implements OnInit {
   }
 
   createPost() {
-    this.postPayload.postName = this.createPostForm.get('postName').value;
-    this.postPayload.subredditId = this.createPostForm.get('subredditName').value;
-    this.postPayload.url = this.createPostForm.get('url').value;
-    this.postPayload.description = this.createPostForm.get('description').value;
 
-    this.postService.createPost(this.postPayload).subscribe((data) => {
+    this.postsService.createPost(this.createPostForm.value).subscribe((data) => {
       this.router.navigateByUrl('/');
     }, error => {
       throwError(error);

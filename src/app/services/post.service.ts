@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PostModel } from './post-model';
 import { Observable } from 'rxjs';
-import { CreatePostPayload } from '../post/create-post/create-post.payload';
-import { AuthService } from '../auth/shared/auth.service';
+import { CreatePostPayload } from '../models/create-post.payload';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
