@@ -3,4 +3,5 @@ export class SubredditModel {
     name: string;
     description: string;
     numberOfPosts?: number;
+    posts?: any[]
 }
