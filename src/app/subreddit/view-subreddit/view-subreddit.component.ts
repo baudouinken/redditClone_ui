@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { faComments } from '@fortawesome/free-solid-svg-icons';
 import { throwError } from 'rxjs';
 import { SubredditModel } from 'src/app/models/subreddit-response';
 import { SubredditService } from 'src/app/services/subreddit.service';
@@ -13,10 +14,12 @@ export class ViewSubredditComponent implements OnInit {
 
   subreddit: SubredditModel;
   subredditId: number;
+  faComments = faComments;
 
   constructor(
     private subRedditService: SubredditService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +29,10 @@ export class ViewSubredditComponent implements OnInit {
     }, error => {
       throwError(error);
     });
+  }
+
+  goToPost(id: number): void {
+    this.router.navigateByUrl('/view-post/' + id);
   }
 
 }
